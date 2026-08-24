@@ -4,7 +4,7 @@ export const SITE = {
   tagline: "Written guides, one game at a time.",
   description:
     "In-depth written guides for Divinity: Original Sin 2 and beyond, with video where it helps.",
-  parentDomain: "https://vexeriz.com",
+  parentDomain: "https://vexeriz-one.vercel.app",
 } as const;
 
 /**
