@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-background: #07070a;
+  --color-foreground: #e8e8f2;
+  --color-surface: #101018;
+  --color-quiet: #8a8a9e;
+  --color-dim: #4a4a5c;
+  --color-line: #1c1c28;
+  --color-silver: #d0d0e4;
+  --color-mist: #9aafc0;
+  --color-ink: #07070a;
+  --color-live: #c45c5c;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --text-hero: clamp(3.4rem, 12vw, 7rem);
+
+  --ease-out-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-quiet);
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-silver) 35%, transparent);
+    color: var(--color-foreground);
+  }
+}
+
+@layer components {
+  .text-metal {
+    background: linear-gradient(
+      140deg,
+      #8a8a9c 0%,
+      #d4d4e6 32%,
+      #f2f2fa 50%,
+      #9a9aac 74%,
+      #c8c8dc 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-dim);
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 0.9;
+    text-wrap: balance;
+  }
+
+  .hairline {
+    height: 1px;
+    background: var(--color-line);
+  }
+
+  /*
+   * Long-form guide prose. Body copy in the main site is short (taglines,
+   * card blurbs) so --color-quiet at ~15px reads fine. A full guide is
+   * hundreds of words at a stretch — that same weight gets fatiguing fast, so
+   * guide bodies get a brighter foreground color, wider measure, and looser
+   * leading, while keeping the same typeface family for brand consistency.
+   */
+  .guide-prose {
+    max-width: 68ch;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-foreground);
+  }
+
+  .guide-prose h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 1.5rem;
+    line-height: 1.15;
+    color: var(--color-foreground);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .guide-prose p {
+    margin-top: 1.25rem;
+  }
+
+  .guide-prose ul {
+    margin-top: 1.25rem;
+    padding-left: 1.25rem;
+    list-style: disc;
+    color: var(--color-silver);
+  }
+
+  .guide-prose li + li {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Grain */
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  opacity: 0.055;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Load-in */
+.reveal {
+  animation: reveal-up 700ms var(--ease-out-smooth) both;
+}
+
+.reveal-d1 {
+  animation-delay: 80ms;
+}
+.reveal-d2 {
+  animation-delay: 160ms;
+}
+.reveal-d3 {
+  animation-delay: 240ms;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
