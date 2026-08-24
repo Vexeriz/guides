@@ -3,9 +3,9 @@ import { Logo } from "@/components/icons";
 import { SITE } from "@/lib/site";
 
 const NAV = [
-  { href: "https://vexeriz.com", label: "Home" },
-  { href: "https://vexeriz.com/#watch", label: "Watch" },
-  { href: "https://vexeriz.com/about", label: "About" },
+  { href: "https://vexeriz-one.vercel.app", label: "Home" },
+  { href: "https://vexeriz-one.vercel.app/#watch", label: "Watch" },
+  { href: "https://vexeriz-one.vercel.app/about", label: "About" },
 ] as const;
 
 export function SiteHeader() {
