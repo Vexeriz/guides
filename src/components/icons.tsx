@@ -8,7 +8,7 @@ export function Logo({
 }: ImgHTMLAttributes<HTMLImageElement>) {
   return (
     <img
-      src="https://vexeriz.com/logo.png?v=3"
+      src="https://vexeriz-one.vercel.app/logo.png?v=3"
       alt={alt}
       className={cn("block h-auto w-auto object-contain", className)}
       {...props}
