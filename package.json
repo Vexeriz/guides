@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
+    "start": "node .output/server/index.mjs",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   },
@@ -15,6 +16,7 @@
     "@tanstack/router-plugin": "^1.168.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.510.0",
+    "nitro": "^3.0.260610-beta",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwind-merge": "^3.5.0",
